@@ -58,11 +58,23 @@ module.exports = (robot) ->
           else
             robot.logger.info tweet
             robot.emit 'slack-attachment',
-              channel: "#{res.message.user.room}"
+              channel: "#{MENTION_ROOM}"
               content:
                 color: "#55acee"
                 fallback: "#{message}"
-                text: "#{message}"
+                text: "#{tweet.text}"
+                author_name: "#{tweet.user.name} (@#{tweet.user.screen_name})"
+                author_link: "http://twitter.com/#{tweet.user.screen_name}"
+                title: "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}"
+                title_link: "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}"
+                thumb_url: "#{tweet.user.profile_image_url}"
+                fields: [
+                    {
+                        "title": "Stats",
+                        "value": "Retweets: #{tweet.retweet_count} | Like: #{tweet.favorite_count} | Followers: #{tweet.user.followers_count} | Friends: #{tweet.user.friends_count}",
+                        "short": false
+                    }
+                ]
 
     setTimeout (->
       doAutomaticSearch(robot)
