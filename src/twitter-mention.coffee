@@ -53,7 +53,16 @@ module.exports = (robot) ->
         robot.brain.data.last_tweet = data.statuses[0].id_str
         for tweet in data.statuses.reverse()
           message = "Tweet Alert: http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}"
-          robot.messageRoom MENTION_ROOM, message
+          if robot.adapterName != "slack"
+            robot.messageRoom MENTION_ROOM, message
+          else
+            robot.logger.info tweet
+            robot.emit 'slack-attachment',
+              channel: "#{res.message.user.room}"
+              content:
+                color: "#55acee"
+                fallback: "#{message}"
+                text: "#{message}"
 
     setTimeout (->
       doAutomaticSearch(robot)
