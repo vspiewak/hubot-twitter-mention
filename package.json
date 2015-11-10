@@ -1,7 +1,7 @@
 {
   "name": "hubot-twitter-mention",
   "description": "A hubot script that continually searches twitter for a keyword you specify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "vspiewak",
   "license": "MIT",
   "keywords": [
