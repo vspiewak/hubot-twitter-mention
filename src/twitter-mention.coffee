@@ -22,7 +22,7 @@
 
 TWIT = require "twit"
 MENTION_ROOM = process.env.HUBOT_TWITTER_MENTION_ROOM || "#general"
-MAX_TWEETS = 50
+MAX_TWEETS = process.env.HUBOT_TWITTER_MENTION_MAX || 50
 
 config =
   consumer_key: process.env.HUBOT_TWITTER_CONSUMER_KEY
