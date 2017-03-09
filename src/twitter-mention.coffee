@@ -12,6 +12,7 @@
 #   HUBOT_TWITTER_ACCESS_TOKEN_SECRET
 #   HUBOT_TWITTER_MENTION_QUERY
 #   HUBOT_TWITTER_MENTION_ROOM
+#   HUBOT_TWITTER_MESSAGE_FORMAT ('plaintext', 'markdown', 'slack')
 #
 # Commands:
 #   none
