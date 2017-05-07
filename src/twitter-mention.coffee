@@ -77,8 +77,9 @@ module.exports = (robot) ->
         """
         robot.messageRoom MENTION_ROOM, message
 
-  robot.brain.on 'loaded', =>
+  robot.brain.once 'loaded', =>
     robot.brain.data.last_tweet ||= '1'
+    robot.logger.info 'twitter-mention poller starting at ' + robot.brain.data.last_tweet
     doAutomaticSearch(robot)
 
   doAutomaticSearch = (robot) ->
